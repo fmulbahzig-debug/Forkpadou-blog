@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why I Started This Blog — Forkpadou Blog Reflection</title>
+  <!--
+    IMPORTANT: Because this file is inside the "posts/" folder,
+    we need to go UP one level ("../") to find style.css.
+    "../style.css" means: go up one folder, then find style.css.
+    All the other links in this file also use "../" for the same reason.
+  -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SITE HEADER — same as every page, but links use "../"
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Forkpadou Blog Reflection</a>
+      </h1>
+      <p class="site-tagline">Academic reflections, classroom discussions, and daily perspectives from law and governance at the University of Liberia</p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       NAVIGATION — no link is "active" on a post page,
+       since posts don't correspond to a nav item.
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       MAIN CONTENT — Full blog post
+       ============================================================ -->
+  <main class="site-main">
+    <div class="container">
+
+      <!-- Back link — gives readers an easy way to return to the post list -->
+      <a href="../index.html" class="back-link">
+        &larr; Back to all posts
+        <!-- &larr; is the ← left arrow HTML entity -->
+      </a>
+
+
+      <!--
+        <article> is a semantic HTML5 element for self-contained content
+        that could stand alone — a blog post, a news story, a forum post.
+        It's the correct tag here, and it helps search engines understand
+        that this is the primary piece of content on the page.
+      -->
+      <article>
+
+        <!-- ── Post Header ─────────────────────────────────── -->
+        <!--
+          The <header> inside an <article> is fine — it means
+          "the header of this article", not the page header.
+        -->
+        <header class="post-header">
+          <p class="post-meta">
+            <!--
+              <time> with a machine-readable "datetime" attribute
+              is the correct semantic element for dates.
+              The datetime format (YYYY-MM-DD) is for machines;
+              the visible text is for humans.
+            -->
+            <time datetime="2026-05-15">May 15, 2026</time>
+            &middot; Written by F. Mulbah Zig Forkpa, Jr.
+            <!-- &middot; is the · centered dot separator -->
+          </p>
+          <h1 class="post-title">Why I Started This Blog</h1>
+        </header>
+
+
+        <!-- ── Post Body ────────────────────────────────────── -->
+        <!--
+          The full article content goes in .post-body.
+          CSS handles all the spacing between paragraphs and headings.
+          Just write your content in <p>, <h2>, <h3>, <blockquote>
+          tags and the styling is applied automatically.
+        -->
+        <div class="post-body">
+
+          <p>
+            Over fourteen years of professional work — spanning advocacy, governance and
+            compliance, the rigorous practice of law, and lecturing university courses — teaches
+            you many things. It teaches you to read carefully, argue precisely, and sit with
+            complexity without demanding that it resolve itself before you are ready. What it
+            does not automatically teach you is how to speak to the people outside the room —
+            the students, the citizens, the practitioners who are shaped by the law without
+            always having access to the thinking behind it. This blog is my attempt to close
+            that gap.
+          </p>
+
+          <p>
+            I am a Law Clerk at the Supreme Court of Liberia, assigned to the Chambers of
+            Justice Wolokolie, and an Adjunct Lecturer at the University of Liberia. I hold
+            two LLMs and an LLB from the Louis Arthur Grimes School of Law, and I am a
+            licensed lawyer in good standing with the Liberian National Bar Association. Before my current roles, I designed and implemented governance programs for
+            USAID Liberia on a development portfolio exceeding fifty-two million United
+            States dollars — programs that included support for landmark legislation in
+            Liberia, among them the Land Rights Act and the Local Government Act.
+            I say all of this not to recite a resume, but to be transparent about the
+            vantage point from which I write.
+          </p>
+
+
+          <h2>Two Rooms, One Blog</h2>
+
+          <p>
+            My professional life currently takes place in two rooms, and both of them
+            produce more than I can carry home in my head alone.
+          </p>
+
+          <p>
+            The first room is the lecture hall at the University of Liberia, where I returned
+            to teaching Criminology two semesters ago after an eight-year absence from the
+            lectern — having previously taught Social Science at the same institution. The
+            classroom has changed. The students have changed. The questions they ask — and the
+            ones they do not ask — tell me things about university education in Liberia that
+            deserve to be written down and examined. Every session produces a reflection worth
+            recording: about how students learn, about the gap between what they are taught and
+            what they carry into the world, about the issues that surface in discussion when
+            you give a room permission to think out loud.
+          </p>
+
+          <p>
+            The second room is in the Chambers of Justice Wolokolie at the Supreme Court of
+            Liberia. When the Court hands down an opinion, it does not merely settle the case
+            before it — it lays down a new rule of law. Liberian jurisprudence is built opinion
+            by opinion, and my position places me in close proximity to that process. There is
+            a responsibility that comes with that proximity: to help the public, practitioners,
+            and students understand what the Court has decided, what principle it has
+            established, and what it means for the practice and development of law in Liberia.
+          </p>
+
+
+          <h2>Why Now</h2>
+
+          <p>
+            Good governance, transparency, and access to legal knowledge have been the
+            foundations of every role I have held — from legislative drafting to development
+            policy to the bench. A blog is, in its own way, an act of transparency. It is a
+            commitment to making the thinking visible, not just the conclusion.
+          </p>
+
+          <p>
+            I have no interest in writing for its own sake. What I want is a record — of what
+            happens in my classrooms, of what the Court is building through its opinions, of
+            the questions that Liberian law and governance are still working to answer. If that
+            record is useful to a student, a colleague, a policymaker, or a curious reader,
+            then it has done its work.
+          </p>
+
+          <blockquote>
+            The law belongs to everyone it governs. Writing about it publicly is the least
+            we can do to honour that fact.
+          </blockquote>
+
+          <p>
+            Welcome to Forkpadou Blog Reflection. I am glad you are here.
+          </p>
+
+        </div>
+        <!-- End .post-body -->
+
+      </article>
+
+    </div>
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Written by <strong>F. Mulbah Zig Forkpa, Jr.</strong></p>
+      <p>&copy; 2026 Forkpadou Blog Reflection. Made by F. Mulbah Zig Forkpa, Jr.</p>
+    </div>
+  </footer>
+
+
+</body>
+</html>

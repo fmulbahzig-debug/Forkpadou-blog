@@ -1,0 +1,546 @@
+/* ================================================================
+   STYLE.CSS — Main stylesheet for My Personal Blog
+   This single file controls the look of every page on the site.
+   All HTML pages link to this file with:
+     <link rel="stylesheet" href="style.css">
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. GOOGLE FONTS IMPORT
+   We load two typefaces from Google Fonts:
+   - "Merriweather" — a serif font designed for screen reading.
+     Long-form text is much more comfortable in a serif face.
+   - "Inter" — a clean, modern sans-serif for headings, labels,
+     and navigation where clarity matters more than warmth.
+   ---------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/* ----------------------------------------------------------------
+   2. CSS CUSTOM PROPERTIES (Variables)
+   Think of these like named constants in code.
+   Define a color once here, use it everywhere.
+   To change the site's accent color, edit ONE line.
+   ---------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --clr-bg:           #f7f6f3;   /* Page background: warm off-white */
+  --clr-surface:      #ffffff;   /* Card and panel background */
+  --clr-text:         #2d3748;   /* Main text: dark grey-blue (softer than pure black) */
+  --clr-text-muted:   #718096;   /* Secondary text: lighter grey */
+  --clr-accent:       #3b82f6;   /* Links and highlights: calm blue */
+  --clr-accent-hover: #1d4ed8;   /* Darker blue for hover states */
+  --clr-border:       #e2e8f0;   /* Borders and dividers: very light grey */
+  --clr-header-bg:    #1a202c;   /* Header and footer: dark navy */
+  --clr-header-text:  #f7fafc;   /* Text on dark backgrounds */
+
+  /* Typography */
+  --font-reading: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --font-ui:      'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing scale — all sizes as multiples of 8px */
+  --space-xs:  0.5rem;    /*  8px */
+  --space-sm:  1rem;      /* 16px */
+  --space-md:  1.5rem;    /* 24px */
+  --space-lg:  2.5rem;    /* 40px */
+  --space-xl:  4rem;      /* 64px */
+
+  /* Layout */
+  --max-width:  740px;    /* Optimal line length for reading (~65–75 chars) */
+  --radius:     8px;      /* Rounded corners on cards and buttons */
+  --transition: 0.2s ease; /* Duration for hover animations */
+}
+
+
+/* ----------------------------------------------------------------
+   3. CSS RESET & BASE STYLES
+   Browsers (Chrome, Firefox, Safari) apply their own default styles.
+   This section zeros those out so we start from a clean slate.
+   ---------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box; /* Padding counts inside an element's width, not outside */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;          /* Base size — all "rem" units are multiples of this */
+  scroll-behavior: smooth;  /* Smooth scroll when clicking anchor (#) links */
+}
+
+body {
+  font-family: var(--font-reading);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.85;          /* 1.85× the font size — generous spacing between lines */
+  min-height: 100vh;          /* Body is at least as tall as the viewport */
+  display: flex;
+  flex-direction: column;     /* Stacks header → nav → main → footer vertically */
+}
+
+
+/* ----------------------------------------------------------------
+   4. GLOBAL TYPOGRAPHY
+   Default styles for headings, paragraphs, links, and images.
+   ---------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-ui);  /* Headings use the clean sans-serif */
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--clr-text);
+}
+
+p {
+  margin-bottom: var(--space-sm);
+}
+
+/* Base link style */
+a {
+  color: var(--clr-accent);
+  text-decoration: none;
+  transition: color var(--transition);  /* Color fades smoothly on hover */
+}
+
+a:hover {
+  color: var(--clr-accent-hover);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;  /* Images never overflow their container */
+  display: block;   /* Removes the small gap beneath inline images */
+}
+
+
+/* ----------------------------------------------------------------
+   5. LAYOUT CONTAINER
+   A centered column with a max width.
+   Wraps content on every page so text doesn't stretch wall-to-wall.
+   Usage: <div class="container">...</div>
+   ---------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;             /* auto left/right margin = centered */
+  padding: 0 var(--space-sm); /* Side breathing room on small screens */
+}
+
+
+/* ----------------------------------------------------------------
+   6. SITE HEADER
+   The dark banner at the top of every page.
+   Contains the blog name and tagline.
+   ---------------------------------------------------------------- */
+.site-header {
+  background-color: var(--clr-header-bg);
+  color: var(--clr-header-text);
+  padding: var(--space-lg) 0;
+  text-align: center;
+}
+
+.site-header .site-title {
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+  margin-bottom: var(--space-xs);
+}
+
+/* Makes the blog title a clickable link back to home on inner pages */
+.site-header .site-title a {
+  color: var(--clr-header-text);
+  text-decoration: none;
+}
+
+.site-header .site-title a:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.site-header .site-tagline {
+  font-family: var(--font-reading);
+  font-size: 0.88rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #a0aec0;  /* Muted grey-blue — readable on dark background */
+}
+
+
+/* ----------------------------------------------------------------
+   7. NAVIGATION BAR
+   The row of page links just below the header.
+   "position: sticky" keeps it pinned to the top as you scroll.
+   ---------------------------------------------------------------- */
+.site-nav {
+  background-color: var(--clr-surface);
+  border-bottom: 2px solid var(--clr-border);
+  position: sticky;  /* Sticks to the top when you scroll past it */
+  top: 0;
+  z-index: 100;      /* Floats above other content so nothing overlaps it */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.site-nav .container {
+  display: flex;         /* Lays nav links side by side in a row */
+  align-items: center;
+  gap: var(--space-xs);
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+}
+
+.site-nav a {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* Hover effect and "active" state (current page is highlighted) */
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--clr-accent);
+  background-color: #eff6ff;  /* Very light blue tint */
+  text-decoration: none;
+}
+
+
+/* ----------------------------------------------------------------
+   8. MAIN CONTENT AREA
+   The center column between the nav and the footer.
+   "flex: 1" makes it grow to fill available space,
+   which pushes the footer to the bottom even on short pages.
+   ---------------------------------------------------------------- */
+.site-main {
+  flex: 1;
+  padding: var(--space-xl) 0;
+}
+
+
+/* ----------------------------------------------------------------
+   9. HOMEPAGE — POST CARDS
+   Each blog post preview on the homepage is a "card".
+   ---------------------------------------------------------------- */
+
+/* The "Latest Posts" section label above the card list */
+.posts-section-title {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--clr-border);
+}
+
+/* The list that holds all the cards (no bullets) */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+/* Individual post card */
+.post-card {
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: var(--space-md) var(--space-lg);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+/* Hover: card lifts slightly — gives the site a responsive, tactile feel */
+.post-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+  transform: translateY(-3px);
+}
+
+/* Date label above the post title */
+.post-card-date {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: var(--space-xs);
+}
+
+.post-card-title {
+  font-size: 1.35rem;
+  margin-bottom: var(--space-xs);
+}
+
+/* The title link — dark text, turns blue on hover */
+.post-card-title a {
+  color: var(--clr-text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.post-card-title a:hover {
+  color: var(--clr-accent);
+  text-decoration: none;
+}
+
+/* Short preview paragraph */
+.post-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  line-height: 1.75;
+  margin-bottom: var(--space-sm);
+}
+
+/* "Read more →" link at the bottom of each card */
+.read-more-link {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap var(--transition), color var(--transition);
+}
+
+/* The arrow slides right on hover — a small but satisfying detail */
+.read-more-link:hover {
+  color: var(--clr-accent-hover);
+  gap: 10px;
+  text-decoration: none;
+}
+
+
+/* ----------------------------------------------------------------
+   10. FULL BLOG POST PAGE
+   Styles for a complete article (the posts/ folder pages).
+   ---------------------------------------------------------------- */
+
+/* "← Back to all posts" link at the top */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  margin-bottom: var(--space-lg);
+  transition: color var(--transition), gap var(--transition);
+}
+
+.back-link:hover {
+  color: var(--clr-accent);
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* The section containing the title, date, and author */
+.post-header {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* "May 15, 2026 · Written by Your Name" */
+.post-meta {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.post-title {
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+/* The full article content */
+.post-body {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.post-body h2 {
+  font-size: 1.4rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.post-body h3 {
+  font-size: 1.1rem;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+.post-body p {
+  margin-bottom: var(--space-md);
+}
+
+/* Block quote — the blue left border makes it visually distinct */
+.post-body blockquote {
+  border-left: 4px solid var(--clr-accent);
+  padding: var(--space-xs) var(--space-md);
+  margin: var(--space-md) 0;
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
+
+
+/* ----------------------------------------------------------------
+   11. ABOUT & CONTACT PAGES (generic page layout)
+   ---------------------------------------------------------------- */
+.page-header {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.page-header h1 {
+  font-size: 2rem;
+}
+
+.page-body {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.page-body h2 {
+  font-size: 1.3rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.page-body p {
+  margin-bottom: var(--space-md);
+}
+
+
+/* ----------------------------------------------------------------
+   12. CONTACT PAGE — Contact card and social links
+   ---------------------------------------------------------------- */
+.contact-card {
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-ui);
+}
+
+.contact-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The small uppercase label ("EMAIL", "FIND ME ON") */
+.contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-text-muted);
+  min-width: 90px;
+}
+
+/* Row of social media pill buttons */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;  /* Wraps to a second row on small screens */
+  gap: var(--space-xs);
+}
+
+/* Individual pill-shaped social button */
+.social-link {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--clr-accent);
+  text-decoration: none;
+  border: 1.5px solid var(--clr-accent);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;  /* Very large radius = pill shape */
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* On hover, the pill fills with the accent color */
+.social-link:hover {
+  background-color: var(--clr-accent);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+/* ----------------------------------------------------------------
+   13. SITE FOOTER
+   Dark bar at the very bottom of every page.
+   ---------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--clr-header-bg);
+  color: #a0aec0;
+  padding: var(--space-lg) 0;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+
+.site-footer p {
+  margin-bottom: var(--space-xs);
+}
+
+.site-footer a {
+  color: #63b3ed;  /* Brighter blue so links are visible on dark background */
+}
+
+
+/* ----------------------------------------------------------------
+   14. RESPONSIVE DESIGN — Mobile adjustments
+   "max-width: 600px" means: apply these rules only on screens
+   narrower than 600px (phones). The site is already readable on
+   desktop — here we just tighten things up for smaller screens.
+   ---------------------------------------------------------------- */
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;  /* Slightly smaller base on phones saves space */
+  }
+
+  .site-header {
+    padding: var(--space-md) 0;
+  }
+
+  .site-header .site-title {
+    font-size: 1.65rem;
+  }
+
+  /* Nav links wrap onto a second row if they don't all fit */
+  .site-nav .container {
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .post-card {
+    padding: var(--space-sm) var(--space-md);  /* Less padding on small screens */
+  }
+
+  .post-title {
+    font-size: 1.6rem;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

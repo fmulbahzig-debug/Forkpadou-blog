@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--
+  DOCTYPE tells the browser: "this is a modern HTML5 document."
+  Without it, browsers use a legacy "quirks mode" that breaks CSS.
+-->
+<html lang="en">
+<!--
+  lang="en" tells search engines and screen readers the page is in English.
+-->
+
+<head>
+  <!-- ============================================================
+       HEAD SECTION
+       Nothing in <head> is visible on the page — it's metadata
+       that tells the browser how to behave and what to load.
+       ============================================================ -->
+
+  <!-- Character encoding: supports all letters, symbols, and emoji -->
+  <meta charset="UTF-8">
+
+  <!--
+    Viewport: crucial for mobile responsiveness.
+    Without this line, phones would shrink the full desktop layout
+    to fit — making text tiny and unreadable.
+    "width=device-width" → use the actual screen width.
+    "initial-scale=1.0" → don't zoom in or out by default.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tab title and bookmark label -->
+  <title>Forkpadou Blog Reflection — Thoughts on Life and Learning</title>
+
+  <!-- Load our shared stylesheet. Every page has this exact line. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SITE HEADER
+       The dark banner at the top of every page.
+       <header> is a semantic tag — it tells browsers and
+       screen readers "this is the introductory content."
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Forkpadou Blog Reflection</h1>
+      <p class="site-tagline">Academic reflections, classroom discussions, and daily perspectives from law and governance at the University of Liberia</p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       <nav> is a semantic tag that marks a set of navigation links.
+       aria-label helps screen readers describe this nav region.
+       class="active" on the Home link marks this as the current page.
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       MAIN CONTENT
+       <main> marks the primary content of the page.
+       There should be only one <main> per page.
+       ============================================================ -->
+  <main class="site-main">
+    <div class="container">
+
+      <!-- Section heading styled as a small uppercase label -->
+      <h2 class="posts-section-title">Latest Posts</h2>
+
+      <!--
+        POST LIST
+        <ul> = unordered list. <li> = list item.
+        We use a list here because it's semantically correct —
+        a blog roll is literally a list of posts.
+        CSS removes the bullets and styles each <li> as a card.
+
+        TO ADD A NEW POST: Copy one <li class="post-card">...</li>
+        block, paste it at the top, and update the content.
+      -->
+      <ul class="post-list">
+
+
+        <!-- ── Post Card 1 (newest) ──────────────────────────── -->
+        <li class="post-card">
+          <p class="post-card-date">May 17, 2026</p>
+          <h3 class="post-card-title">
+            <a href="posts/free-tuition-attendance.html">The Price of Free: A Reflection on Class Attendance at the University of Liberia</a>
+          </h3>
+          <p class="post-card-excerpt">
+            Eleven minutes into class, only five of thirty-four students had arrived. It is a
+            pattern I have watched repeat itself all semester. Is the University of Liberia's
+            free tuition policy quietly shaping how students value the education it funds?
+          </p>
+          <a href="posts/free-tuition-attendance.html" class="read-more-link"
+             aria-label="Read full post: The Price of Free">
+            Read more &rarr;
+          </a>
+        </li>
+
+
+        <!-- ── Post Card 2 ────────────────────────────────────── -->
+        <li class="post-card">
+          <p class="post-card-date">May 15, 2026</p>
+          <h3 class="post-card-title">
+            <a href="posts/my-first-post.html">Why I Started This Blog</a>
+          </h3>
+          <p class="post-card-excerpt">
+            Everyone has a story worth telling. This post is about why I finally
+            decided to start writing mine down — the fears I had to overcome, and
+            what I hope to share with you along the way.
+          </p>
+          <a href="posts/my-first-post.html" class="read-more-link"
+             aria-label="Read full post: Why I Started This Blog">
+            Read more &rarr;
+          </a>
+        </li>
+
+
+
+
+      </ul>
+      <!-- End .post-list -->
+
+    </div>
+  </main>
+
+
+  <!-- ============================================================
+       SITE FOOTER
+       <footer> marks footer content — copyright, secondary links.
+       flex: 1 on .site-main pushes this to the bottom of the page.
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Written by <strong>F. Mulbah Zig Forkpa, Jr.</strong></p>
+      <p>&copy; 2026 Forkpadou Blog Reflection. Made by F. Mulbah Zig Forkpa, Jr.</p>
+      <!-- &copy; is the © copyright symbol -->
+    </div>
+  </footer>
+
+
+</body>
+</html>
