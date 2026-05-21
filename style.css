@@ -504,7 +504,170 @@ img {
 
 
 /* ----------------------------------------------------------------
-   13. SITE FOOTER
+   13. OPINIONS PAGE
+   Styles for opinions.html — the Supreme Court opinions library.
+   ---------------------------------------------------------------- */
+
+/* Subtitle text under the page heading */
+.opinions-page-subtitle {
+  font-size: 0.95rem;
+  color: var(--clr-text-muted);
+  margin-top: var(--space-xs);
+  font-family: var(--font-ui);
+}
+
+/* Visually hidden — exists for screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Wrapper that gives the search bar top breathing room */
+.opinions-search-wrap {
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+
+/* The search input field */
+.opinions-search-input {
+  width: 100%;
+  padding: 0.75rem 1.1rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: var(--clr-text);
+  background-color: var(--clr-surface);
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Blue ring when the search box is focused / clicked into */
+.opinions-search-input:focus {
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* "12 opinions" / "3 results for 'Doe'" counter line */
+.opinions-count {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-md);
+  min-height: 1.2em; /* prevents layout shift when text changes */
+}
+
+/* The list that holds all opinion cards (no bullet points) */
+.opinions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: 0;
+}
+
+/* Individual opinion card — same card style as blog posts */
+.opinion-card {
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: var(--space-md) var(--space-lg);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.opinion-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+/* Row containing the topic badge and the date */
+.opinion-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+/* Coloured topic pill — e.g. "Land Rights", "Criminal Law" */
+.opinion-card-topic {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-accent);
+  background-color: #eff6ff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Date in the meta row */
+.opinion-card-date {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Case name heading inside each card */
+.opinion-card-title {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+  color: var(--clr-text);
+}
+
+/* One-sentence description of the ruling */
+.opinion-card-desc {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  line-height: 1.75;
+  margin-bottom: var(--space-sm);
+}
+
+/* "View Opinion →" button */
+.opinion-view-btn {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--clr-accent);
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.opinion-view-btn:hover {
+  background-color: var(--clr-accent-hover);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* "No results" message shown when search finds nothing */
+.opinions-empty {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--clr-text-muted);
+  text-align: center;
+  padding: var(--space-xl) 0;
+  font-style: italic;
+}
+
+
+/* ----------------------------------------------------------------
+   14. SITE FOOTER
    Dark bar at the very bottom of every page.
    ---------------------------------------------------------------- */
 .site-footer {
@@ -526,7 +689,7 @@ img {
 
 
 /* ----------------------------------------------------------------
-   14. RESPONSIVE DESIGN — Mobile adjustments
+   15. RESPONSIVE DESIGN — Mobile adjustments
    "max-width: 600px" means: apply these rules only on screens
    narrower than 600px (phones). The site is already readable on
    desktop — here we just tighten things up for smaller screens.

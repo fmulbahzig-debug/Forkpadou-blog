@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supreme Court Opinions — Forkpadou Blog Reflections</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SITE HEADER — same as every page
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="index.html">Forkpadou Blog Reflections</a>
+      </h1>
+      <p class="site-tagline">Academic reflections and perspectives on law, governance, and social issues in Liberia</p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       NAVIGATION — "Opinions" is marked active (current page)
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="opinions.html" class="active" aria-current="page">Opinions</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="site-main">
+    <div class="container">
+
+      <!-- Page heading -->
+      <div class="page-header">
+        <h1>Supreme Court Opinions</h1>
+        <p class="opinions-page-subtitle">
+          A curated library of Liberian Supreme Court opinions.
+          Type any part of a case name in the search box below to find it instantly.
+        </p>
+      </div>
+
+
+      <!-- ── SEARCH BAR ──────────────────────────────────────── -->
+      <!--
+        The <label> is hidden visually (sr-only class) but read aloud
+        by screen readers — important for accessibility.
+        "for" on the label must match "id" on the input.
+      -->
+      <div class="opinions-search-wrap">
+        <label for="case-search" class="sr-only">Search cases by name</label>
+        <input
+          type="search"
+          id="case-search"
+          class="opinions-search-input"
+          placeholder="&#128269; Search by case name..."
+          aria-label="Search Supreme Court cases by name"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Live count ("12 opinions" / "3 results for 'Doe'") -->
+      <p class="opinions-count" id="opinions-count" aria-live="polite"></p>
+
+
+      <!-- ── OPINIONS LIST ────────────────────────────────────── -->
+      <!--
+        Cards are built and injected here by the JavaScript below.
+        Keeping the list empty in HTML means adding a new case only
+        requires editing the OPINIONS array in the script — not HTML.
+      -->
+      <ul class="opinions-list" id="opinions-list" aria-label="Supreme Court opinions"></ul>
+
+
+      <!-- Shown only when a search finds nothing -->
+      <p class="opinions-empty" id="opinions-empty" hidden>
+        No cases match "<span id="opinions-empty-term"></span>".
+        Try a shorter search term or check the spelling.
+      </p>
+
+    </div>
+  </main>
+
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Written by <strong>F. Mulbah Zig Forkpa, Jr.</strong></p>
+      <p>&copy; 2026 Forkpadou Blog Reflections. Made by F. Mulbah Zig Forkpa, Jr.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // ================================================================
+    // SUPREME COURT OPINIONS — CASE LIST
+    // ================================================================
+    //
+    // HOW TO ADD A NEW CASE (step-by-step):
+    //
+    //   1. Upload your PDF to Google Drive.
+    //   2. Right-click the file → "Share" → change to "Anyone with the
+    //      link can view" → click "Copy link".
+    //      The link looks like:
+    //        https://drive.google.com/file/d/ABC1234XYZ/view?usp=sharing
+    //   3. Copy one of the existing { } blocks below.
+    //   4. Paste it at the very TOP of the list (right after the "[" on
+    //      the first line), then fill in the five fields:
+    //
+    //        name        — Full case title, e.g. "Doe v. Ministry of Justice"
+    //        date        — Date the opinion was handed down, e.g. "March 12, 2024"
+    //        year        — Just the year as a number, e.g. 2024
+    //        topic       — Short category label, e.g. "Land Rights"
+    //        description — One or two sentences summarising the ruling
+    //        url         — The Google Drive "copy link" you got in step 2
+    //
+    //   5. Make sure every { } block except the very last one ends with
+    //      a comma ( , ) — that's standard JavaScript list syntax.
+    //   6. Save the file. Refresh the browser. The new case appears.
+    //
+    // ================================================================
+
+    const OPINIONS = [
+
+      // ── Add new cases above this line, newest first ──────────────
+
+      {
+        name: "Yekeh Kolubah v. House of Representatives",
+        date: "May 20, 2026",
+        year: 2026,
+        topic: "Constitutional Law",
+        description: "Hon. Kolubah filed a bill of information seeking reversal of his expulsion from the House and contempt sanctions against its members for defying a court order. The Chambers Justice denied the information, finding that the House members had not been properly served with the court's precept and that the informant bore responsibility for identifying the correct person for service.",
+        url: "https://drive.google.com/file/d/1eNjaKT409ZwA7Md2QNh93Ky9xT6rTV9e/view?usp=drive_link"
+      },
+      {
+        name: "Intestate of Nagbe v. Intestate of Hage",
+        date: "May 20, 2026",
+        year: 2026,
+        topic: "Land Rights",
+        description: "The Supreme Court reversed the trial court's dismissal of a petition to remove cloud and quiet title, holding that a judgment cannot bind a person who was not a party to the original suit. Because the appellant was not brought under the court's jurisdiction in the 1989 Vai Town Land Case, he could not be barred from asserting his property rights.",
+        url: "https://drive.google.com/file/d/1-YgXt7lqUOGgGFiUMBNQ6aKBZU0GLVVp/view?usp=drive_link"
+      },
+      {
+        name: "Republic v. James Tarr",
+        date: "February 14, 2024",
+        year: 2024,
+        topic: "Criminal Law",
+        description: "Landmark ruling on due-process rights during pre-trial detention, affirming that extended remand without charge violates Article 21 of the Liberian Constitution.",
+        url: "https://drive.google.com/file/d/REPLACE_WITH_YOUR_LINK/view?usp=sharing"
+      },
+      {
+        name: "Pewee v. Ministry of Lands, Mines and Energy",
+        date: "November 3, 2023",
+        year: 2023,
+        topic: "Land Rights",
+        description: "Court interprets the scope of customary land ownership protections under the Land Rights Act of 2018, finding that community boundaries must be surveyed before any government concession can proceed.",
+        url: "https://drive.google.com/file/d/REPLACE_WITH_YOUR_LINK/view?usp=sharing"
+      },
+      {
+        name: "Kollie v. National Legislature of Liberia",
+        date: "June 21, 2022",
+        year: 2022,
+        topic: "Constitutional Law",
+        description: "Ruling on the separation of powers, holding that the Legislature cannot delegate unbounded rule-making authority to the Executive Branch without establishing clear standards.",
+        url: "https://drive.google.com/file/d/REPLACE_WITH_YOUR_LINK/view?usp=sharing"
+      }
+
+      // ── Add new cases above this line, newest first ──────────────
+
+    ]; // ← do not delete this closing bracket
+
+
+    // ================================================================
+    // SEARCH AND DISPLAY LOGIC
+    // You do NOT need to change anything below this line.
+    // ================================================================
+
+    const listEl      = document.getElementById("opinions-list");
+    const searchInput = document.getElementById("case-search");
+    const countEl     = document.getElementById("opinions-count");
+    const emptyEl     = document.getElementById("opinions-empty");
+    const emptyTermEl = document.getElementById("opinions-empty-term");
+
+    // Builds one <li> card element for a single opinion object
+    function buildCard(opinion) {
+      const li = document.createElement("li");
+      li.className = "opinion-card";
+      li.innerHTML = `
+        <div class="opinion-card-meta">
+          <span class="opinion-card-topic">${opinion.topic}</span>
+          <span class="opinion-card-date">${opinion.date}</span>
+        </div>
+        <h2 class="opinion-card-title">${opinion.name}</h2>
+        <p class="opinion-card-desc">${opinion.description}</p>
+        <a
+          href="${opinion.url}"
+          class="opinion-view-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View opinion: ${opinion.name} (opens in new tab)"
+        >View Opinion &rarr;</a>
+      `;
+      return li;
+    }
+
+    // Renders either all opinions or only those matching the search term
+    function renderOpinions(query) {
+      const term    = query.trim().toLowerCase();
+      const results = term
+        ? OPINIONS.filter(op => op.name.toLowerCase().includes(term))
+        : OPINIONS;
+
+      listEl.innerHTML = ""; // clear previous cards
+
+      if (results.length === 0) {
+        emptyTermEl.textContent = query.trim();
+        emptyEl.hidden = false;
+        countEl.textContent = "";
+      } else {
+        emptyEl.hidden = true;
+        results.forEach(op => listEl.appendChild(buildCard(op)));
+        countEl.textContent = term
+          ? `${results.length} result${results.length !== 1 ? "s" : ""} for "${query.trim()}"`
+          : `${results.length} opinion${results.length !== 1 ? "s" : ""}`;
+      }
+    }
+
+    // Show all cases on first load
+    renderOpinions("");
+
+    // Re-filter on every keystroke — no button press needed
+    searchInput.addEventListener("input", () => renderOpinions(searchInput.value));
+  </script>
+
+</body>
+</html>
