@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+User-agent: Linkedinbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+Sitemap: https://fmulbahzig-debug.github.io/Forkpadou-blog/sitemap.xml
